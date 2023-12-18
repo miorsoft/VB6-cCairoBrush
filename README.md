@@ -1,4 +1,9 @@
-# VB6 Cairo Brush Class... [ Coming Soon ]
+# VB6 Cairo Brush Class
+
+Description here:
+https://www.vbforums.com/showthread.php?901998-VB6-Cairo-BRUSH
+
+
 
 ## Build In
 
