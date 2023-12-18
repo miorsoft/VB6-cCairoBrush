@@ -1,4 +1,4 @@
-# VB6 Cairo Brush Class
+# VB6 Cairo Brush Class... [ Coming Soon ]
 
 ## Build In
 
@@ -19,3 +19,5 @@
 [<img src="Images/006.jpg">](https://github.com/miorsoft/VB6-cCairoBrush/blob/master/Images/006.jpg)
 
 [<img src="Images/007.jpg">](https://github.com/miorsoft/VB6-cCairoBrush/blob/master/Images/007.jpg)
+
+[<img src="Images/008.jpg">](https://github.com/miorsoft/VB6-cCairoBrush/blob/master/Images/008.jpg)
