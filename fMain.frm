@@ -131,7 +131,7 @@ Private Sub cmdTEST_Click(Index As Integer)
         '    ----------- BRUSH1 --------------
         Brush.Clear
         A = 1
-        R = Rnd: G = Rnd: B = Rnd
+        R = Int(Rnd * 100) * 0.01: G = Int(Rnd * 100) * 0.01: B = Int(Rnd * 100) * 0.01
         CC.SetSourceColor vbWhite: CC.Paint
         CC.SetSourceRGBA R, G * 2, B, A
         CC.SetLineWidth 20
@@ -308,10 +308,7 @@ Private Sub Form_Load()
 
     Set Brush = New cCairoBrush
 
-    R = 0.8
-    G = 0.1
-    B = 0
-    A = 0.5
+
     CC.SetLineCap CAIRO_LINE_CAP_ROUND
     CC.SetLineJoin CAIRO_LINE_JOIN_ROUND
 
@@ -327,6 +324,10 @@ Private Sub Command1_Click()
     Ima = 0
 
     '-----------------------------------------------------------------------
+    R = 0.8
+    G = 0.1
+    B = 0
+    A = 0.5
 
 
     '----------- LINE By LINE --------------
