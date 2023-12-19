@@ -117,6 +117,10 @@ Friend Sub DRAW(CC As cCairoContext, Optional GlobalAlpha As Double = 1, Optiona
     For I = 1 To NP - 1
         DX = (NX(I + 1) + NX(I)) * 0.5
         DY = (NY(I + 1) + NY(I)) * 0.5
+        'Maybe better this?
+        '        DX = -(P(I + 1).Y - P(I - 1).Y)
+        '        DY = (P(I + 1).X - P(I - 1).X)
+
         pvMakeNormal DX, DY
         Curve1(I).X = P(I).X - P(I).Radius * DX
         Curve1(I).Y = P(I).Y - P(I).Radius * DY
@@ -136,6 +140,10 @@ Friend Sub DRAW(CC As cCairoContext, Optional GlobalAlpha As Double = 1, Optiona
     For I = 1 To NP - 1
         DX = (NX(I + 1) + NX(I)) * 0.5
         DY = (NY(I + 1) + NY(I)) * 0.5
+        'Maybe better this?
+        '        DX = -(P(I + 1).Y - P(I - 1).Y)
+        '        DY = (P(I + 1).X - P(I - 1).X)
+
         pvMakeNormal DX, DY
         Curve2(I).X = P(I).X + P(I).Radius * DX
         Curve2(I).Y = P(I).Y + P(I).Radius * DY
@@ -174,14 +182,12 @@ Friend Sub DRAW(CC As cCairoContext, Optional GlobalAlpha As Double = 1, Optiona
     End If
 
 
-
-
     Dim Mesh      As cCairoPattern
     '    Set Mesh = Cairo.CreateMeshPattern
 
     If BorderAlpha <> 1 Then      ' CON 'Spina Dorsale'
         For I = 0 To NP - 1
-            Set Mesh = Cairo.CreateMeshPattern    'Anche Qua per errore alpha
+            Set Mesh = Cairo.CreateMeshPattern
             K = I + 1
             NXK = NX(K)
             NYK = NY(K)
@@ -205,8 +211,7 @@ Friend Sub DRAW(CC As cCairoContext, Optional GlobalAlpha As Double = 1, Optiona
             CC.Paint 1#, Mesh
         Next
         For I = 0 To NP - 1
-
-            Set Mesh = Cairo.CreateMeshPattern    'Anche Qua per errore alpha
+            Set Mesh = Cairo.CreateMeshPattern
             K = I + 1
             DX = CurveSpine(I).NX
             DY = CurveSpine(I).NY
@@ -264,16 +269,21 @@ Friend Sub DRAW(CC As cCairoContext, Optional GlobalAlpha As Double = 1, Optiona
 
 
     '''' ------------ DEBUG -----------------
-    '    CC.SetSourceColor vbWhite
-    '    For I = 0 To NP
-    '        CC.Arc CurveSpine(I).FirstControlPointX, CurveSpine(I).FirstControlPointY, 4: CC.Fill
-    '        CC.Arc CurveSpine(I).SecondControlPointX, CurveSpine(I).SecondControlPointY, 4: CC.Fill
-    '        CC.Arc Curve1(I).FirstControlPointX, Curve1(I).FirstControlPointY, 4: CC.Fill
-    '        CC.Arc Curve1(I).SecondControlPointX, Curve1(I).SecondControlPointY, 4: CC.Fill
-    '        CC.Arc P(I).X, P(I).Y, 8: CC.Stroke
-    '        CC.Arc CurveSpine(I).X, CurveSpine(I).Y, 6: CC.Stroke
-    '        CC.Arc Curve1(I).X, Curve1(I).Y, 6: CC.Stroke
-    '    Next
+'    CC.SetSourceColor vbBlack
+'    CC.SetLineWidth 1
+'    For I = 0 To NP
+'        CC.SetSourceRGBA P(I).R, P(I).G, P(I).B, 0.75
+'        '            CC.Arc CurveSpine(I).FirstControlPointX, CurveSpine(I).FirstControlPointY, 4: CC.Fill
+'        '            CC.Arc CurveSpine(I).SecondControlPointX, CurveSpine(I).SecondControlPointY, 4: CC.Fill
+'        '            CC.Arc Curve1(I).FirstControlPointX, Curve1(I).FirstControlPointY, 4: CC.Fill
+'        '            CC.Arc Curve1(I).SecondControlPointX, Curve1(I).SecondControlPointY, 4: CC.Fill
+'        '            CC.Arc Curve2(I).FirstControlPointX, Curve2(I).FirstControlPointY, 4: CC.Fill
+'        '            CC.Arc Curve2(I).SecondControlPointX, Curve2(I).SecondControlPointY, 4: CC.Fill
+'        CC.Arc P(I).X, P(I).Y, 8: CC.Stroke
+'        CC.Arc CurveSpine(I).X, CurveSpine(I).Y, 6: CC.Stroke
+'        CC.Arc Curve1(I).X, Curve1(I).Y, 6: CC.Stroke
+'        CC.Arc Curve2(I).X, Curve2(I).Y, 6: CC.Stroke
+'    Next
     '--------------------------------------------
 
 
